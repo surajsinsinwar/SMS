@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+	<style type="text/css" media="screen">
+		#chartdiv {
+	width	: 100%;
+	height	: 500px;
+}
+	</style>
+</head>
+<body>
+<script src="https://res.cloudinary.com/dmelnrf1p/raw/upload/v1559537888/Codenium.js"></script>
+<script src="https://www.amcharts.com/lib/3/serial.js"></script>
+<script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
+<div id="chartdiv"></div>	
+
+<script type="text/javascript">
+	var firstDate = new Date();
+
+var data = [
+  {
+    "time": new Date(2017, 9, 10, 0, 00, 00),
+    "value": 3
+  }, {
+    "time": new Date(2017, 9, 10, 1, 00, 00),
+    "value": 1
+  }, {
+    "time": new Date(2017, 9, 10, 2, 00, 00),
+    "value": 4
+  }, {
+    "time": new Date(2017, 9, 10, 3, 00, 00),
+    "value": 5
+  }, {
+    "time": new Date(2017, 9, 10, 4, 00, 00),
+    "value": 6
+  }, {
+    "time": new Date(2017, 9, 10, 5, 00, 00),
+    "value": 3
+  }, {
+    "time": new Date(2017, 9, 10, 6, 00, 00),
+    "value": 7
+  }, {
+    "time": new Date(2017, 9, 10, 7, 00, 00),
+    "value": 8
+  }, {
+    "time": new Date(2017, 9, 10, 8, 00, 00),
+    "value": 9
+  }, {
+    "time": new Date(2017, 9, 10, 9, 00, 00),
+    "value": 9 
+  }];
+
+var chart = AmCharts.makeChart("chartdiv", {
+  "type": "serial",
+  "theme": "light",
+  "fontFamily": "Open Sans",
+	"fontSize": 12,
+  "marginTop": 0,
+  "marginRight": 10,
+  "dataProvider": data,
+  
+  "valueAxes": [{
+    "axisAlpha": 0,
+    "position": "left",
+    "guides": [{
+      "value": 4,
+      "lineAlpha": 1.0,
+      "lineColor": "yellow",
+      "lineThickness": 2
+    }, {
+      "value": 7,
+      "lineAlpha": 1.0,
+      "lineColor": "red",
+      "lineThickness": 2
+    }]
+  }],
+  "graphs": [{
+    "id": "g1",
+    
+    "bullet": "round",
+    "bulletSize": 15,
+    "bulletColor": "gray",
+    "bulletAlpha": .5,
+    
+    "lineColor": "red",
+    "lineThickness": 10,
+    "lineAlpha": 1,
+    "negativeLineColor": "yellow",
+    "negativeBase": 7,
+    "negativeLineAlpha": .5,
+    "type": "smoothedLine",
+    "valueField": "value"
+  }, {
+    "id": "g2",
+    
+    // "bulletSize": 11,
+    // "bullet": "square",
+    
+    "lineColor": "red",
+    "lineThickness": 10,
+    "lineAlpha": 0,
+    "negativeLineColor": "green",
+    "negativeBase": 4,
+    "negativeLineAlpha": 1,
+    "showBalloon": false,
+    "type": "smoothedLine",
+    "valueField": "value"
+  }],
+  "chartScrollbar": {
+    "graph": "g1",
+    "gridAlpha": 0,
+    "color": "#888888",
+    "scrollbarHeight": 50,
+    "backgroundAlpha": 0,
+    "selectedBackgroundAlpha": 0.1,
+    "selectedBackgroundColor": "#888888",
+    "graphFillAlpha": 0,
+    "autoGridCount": true,
+    "selectedGraphFillAlpha": 0.1,
+    "graphLineAlpha": 0.2,
+    "graphLineColor": "#c2c2c2",
+    "selectedGraphLineColor": "#888888",
+    "selectedGraphLineAlpha": 1
+  },
+  "chartCursor": {
+    "categoryBalloonDateFormat": "MMM DD, JJ:NN",
+    "cursorAlpha": 0,
+    "valueLineEnabled": true,
+    "valueLineBalloonEnabled": true,
+    "valueLineAlpha": 0.5,
+    "fullWidth": true
+  },
+  "dataDateFormat": "JJ, DD MMMM",
+  "categoryField": "time",
+  "categoryAxis": {
+    "minPeriod": "hh",
+    "parseDates": true,
+    "minorGridAlpha": 0.1,
+    "minorGridEnabled": true,
+  }
+});
+
+chart.addListener("rendered", zoomChart);
+if (chart.zoomChart) {
+  chart.zoomChart();
+}
+
+function zoomChart() {
+  chart.zoomToIndexes(Math.round(chart.dataProvider.length * 0.0), Math.round(chart.dataProvider.length * 0.6));
+}
+
+
+</script>																					
+</body>
+</html>
