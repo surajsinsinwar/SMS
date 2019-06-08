@@ -1,0 +1,26 @@
+.HWContainer{
+	height: 450px;
+}
+.homeWork{
+	width: 45%;
+	position: relative;
+	left: 5%;
+}
+
+
+
+
+@media screen and (min-width: 760px) {
+	.HWContainer{
+        height: 900px;
+	}
+	.homeWork{
+		width: 90%;
+		left: 0%;
+	}
+	.announ{
+		width: 90%;
+		top: 0px;
+		left: 0px;
+	}
+}
